@@ -54,7 +54,7 @@ function App() {
                 </div>
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="Search username..." required />
             </div>
-            <button type="submit" class="shadow-lg p-2.5 ms-2 text-sm font-medium bg-indigo-500 dark:text-white rounded-lg border border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 text-gray-900">
+            <button type="submit" class="shadow-lg p-2.5 ms-2 text-sm font-medium bg-indigo-500 dark:text-white rounded-lg border border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 text-white">
                 Search
                 <span class="sr-only">Search</span>
             </button>
