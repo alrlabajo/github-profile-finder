@@ -63,16 +63,16 @@ function App() {
         {error && (<p className="text-red-600 dark:text-red-400 text-center flex flex-col shadow-lg justify-center my-4 p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md">{error}</p>)}
 
         {profile && (
-          <div className="flex flex-col shadow-lg justify-center items-center my-4 p-4 sm:p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md dark:text-white">
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center justify-center  w-full">
+          <div className="flex flex-col shadow-lg justify-center items-center my-4 p-6 sm:p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md dark:text-white">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-5 items-center justify-center w-full">
               <div className="w-32 h-32 flex-shrink-0">
                 <img src={profile.avatar_url} className="w-full h-full rounded-full object-cover" alt={profile.login} />
               </div>
             
               <div className="flex flex-col text-center sm:text-left space-y-4 w-full sm:max-w-md">
                 <div className="flex flex-col">
-                  <div className="h-12 overflow-hidden">
-                    <p className="text-2xl sm:text-3xl font-bold truncate">
+                  <div className="overflow-hidden">
+                    <p className="text-2xl sm:text-3xl font-bold break-words whitespace-normal">
                       {profile.name || profile.login}
                     </p>
                   </div>
@@ -105,7 +105,6 @@ function App() {
           <div className="my-6 md:my-8 dark:text-white">
             <h2 className="text-xl font-semibold mb-4 text-center">Repositories</h2>
             <ul className="grid grid-cols-3 gap-4">
-
               {repos.map((repo) => (
                 <li
                   key={repo.id}
@@ -117,9 +116,9 @@ function App() {
                   rel="noopener noreferrer"
                   className="flex flex-col h-full text-gray-600 dark:text-indigo-200"
                 >
-                  <div className="font-semibold hover:underline text-sm break-words whitespace-normal">
-  {repo.name}
-</div>
+                  <div className="font-semibold hover:underline text-sm truncate">
+                    {repo.name}
+                  </div>
                   <div className="text-sm mt-2 text-gray-500 flex gap-4 text-xs">
                     <span>⭐ {repo.stargazers_count}</span>
                     <span>🍴 {repo.forks_count}</span>
