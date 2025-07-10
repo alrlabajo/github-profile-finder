@@ -44,7 +44,7 @@ function App() {
     <div className="px-4 max-w-screen-xl mx-auto">
       <h1 className="text-3xl md:text-5xl font-bold dark:text-white text-center">Github Profile Finder</h1>
       <div className="w-full my-6 md:my-10">
-        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-col xs:flex-row items-center w-full mx-auto font-medium gap-2">   
+        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-col xs:flex-row sm:flex-row items-center w-full mx-auto font-medium gap-2">   
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full shadow-lg">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -54,7 +54,7 @@ function App() {
                 </div>
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="Search username..." required />
             </div>
-            <button type="submit" className="shadow-lg p-2.5 text-sm font-medium bg-indigo-500 dark:text-white rounded-lg border border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 text-white w-full xs:w-auto">
+            <button type="submit" className="shadow-lg p-2.5 text-sm font-medium bg-indigo-500 dark:text-white rounded-lg border border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 text-white xs:w-auto">
                 Search
                 <span className="sr-only">Search</span>
             </button>
