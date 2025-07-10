@@ -42,10 +42,9 @@ function App() {
 
   return (
     <>
-      <div className="px-4 max-w-screen-xl mx-auto">
       <h1 className="text-3xl md:text-5xl font-bold dark:text-white text-center whitespace-nowrap">Github Profile Finder</h1>
-      <div className="w-full my-6 md:my-10">
-        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-row items-center w-full mx-auto font-medium gap-2">   
+      <div className="w-lg h-full my-10">
+        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-row w-full h-full items-center mx-auto font-medium gap-2">   
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full shadow-lg">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -65,15 +64,24 @@ function App() {
 
         {profile && (
           <div className="flex flex-col shadow-lg justify-center items-center my-4 p-4 sm:p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md dark:text-white">
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center">
-              <img src={profile.avatar_url} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full" alt={profile.login} />
-              <div className="flex flex-col text-center sm:text-left space-y-4">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center justify-center  w-full">
+              <div className="w-32 h-32 flex-shrink-0">
+                <img src={profile.avatar_url} className="w-full h-full rounded-full object-cover" alt={profile.login} />
+              </div>
+            
+              <div className="flex flex-col text-center sm:text-left space-y-4 w-full sm:max-w-md">
                 <div className="flex flex-col">
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                    {profile.name || profile.login}
-                  </p>
-                  <p className="text-sm">{profile.bio}</p>
+                  <div className="h-12 overflow-hidden">
+                    <p className="text-2xl sm:text-3xl font-bold truncate">
+                      {profile.name || profile.login}
+                    </p>
+                  </div>
+                  
+                  <div className="overflow-y-auto">
+                    <p className="text-sm">{profile.bio || "No bio available"}</p>
+                  </div>
                 </div>
+
                 <div className="flex flex-row justify-center sm:justify-start space-x-6 sm:space-x-14 text-center text-xs sm:text-sm">
                   <div className="flex flex-col">
                     <h3 className="font-extrabold">{profile.followers}</h3>
@@ -96,33 +104,34 @@ function App() {
         {repos.length > 0 && (
           <div className="my-6 md:my-8 dark:text-white">
             <h2 className="text-xl font-semibold mb-4 text-center">Repositories</h2>
-            <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 justify-center">
+            <ul className="grid grid-cols-3 gap-4">
+
               {repos.map((repo) => (
                 <li
                   key={repo.id}
-                  className="p-3 md:p-4 bg-gray-100/75 dark:bg-gray-600/75 rounded-lg shadow hover:shadow-md transition text-left hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+                  className="w-40 h-full p-3 text-left md:p-4 bg-gray-100/75 dark:bg-gray-600/75 rounded-lg shadow hover:shadow-md transition hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 flex flex-col"
                 >
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block h-full w-full text-gray-600 dark:text-indigo-200 cursor-pointer"
-                  >
-                    <div className="font-semibold hover:underline text-sm leading-tight">
-                      {repo.name}
-                    </div>
-                    <div className="text-sm mt-2 text-gray-500 flex gap-4 text-xs">
-                      <span>⭐ {repo.stargazers_count}</span>
-                      <span>🍴 {repo.forks_count}</span>
-                    </div>
-                  </a>
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col h-full text-gray-600 dark:text-indigo-200"
+                >
+                  <div className="font-semibold hover:underline text-sm break-words whitespace-normal">
+  {repo.name}
+</div>
+                  <div className="text-sm mt-2 text-gray-500 flex gap-4 text-xs">
+                    <span>⭐ {repo.stargazers_count}</span>
+                    <span>🍴 {repo.forks_count}</span>
+                  </div>
+                </a>
+
                 </li>
               ))}
             </ul>
           </div>
         )}
       </div>
-    </div>
     </>
   )
 }
