@@ -43,8 +43,8 @@ function App() {
   return (
     <>
       <h1 className="text-3xl md:text-5xl font-bold dark:text-white text-center whitespace-nowrap">Github Profile Finder</h1>
-      <div className="w-lg h-full my-10">
-        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-row w-full h-full items-center mx-auto font-medium gap-2">   
+      <div className="w-auto sm:w-lg h-full my-7">
+        <form onSubmit={(e) => {e.preventDefault(); GithubProfileAPI()}} className="flex flex-row w-auto sm:w-lg h-full items-center mx-auto font-medium gap-2">   
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full shadow-lg">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -63,16 +63,16 @@ function App() {
         {error && (<p className="text-red-600 dark:text-red-400 text-center flex flex-col shadow-lg justify-center my-4 p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md">{error}</p>)}
 
         {profile && (
-          <div className="flex flex-col shadow-lg justify-center items-center my-4 p-6 sm:p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md dark:text-white">
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-5 items-center justify-center w-full">
-              <div className="w-32 h-32 flex-shrink-0">
+          <div className="flex flex-col w-auto sm:w-lg shadow-lg justify-center items-center my-4 p-6 sm:p-6 bg-gray-100/75 dark:bg-gray-600/75 rounded-md dark:text-white">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 items-center justify-center w-full">
+              <div className="w-30 h-30 flex-shrink-0">
                 <img src={profile.avatar_url} className="w-full h-full rounded-full object-cover" alt={profile.login} />
               </div>
             
-              <div className="flex flex-col text-center sm:text-left space-y-4 w-full sm:max-w-md">
+              <div className="flex flex-col text-center sm:text-left space-y-4 w-full sm:w-lg">
                 <div className="flex flex-col">
                   <div className="overflow-hidden">
-                    <p className="text-2xl sm:text-3xl font-bold break-words whitespace-normal">
+                    <p className="text-3xl font-bold break-words whitespace-normal">
                       {profile.name || profile.login}
                     </p>
                   </div>
@@ -104,11 +104,11 @@ function App() {
         {repos.length > 0 && (
           <div className="my-6 md:my-8 dark:text-white">
             <h2 className="text-xl font-semibold mb-4 text-center">Repositories</h2>
-            <ul className="grid grid-cols-3 gap-4">
+            <ul className="grid grid-cols-3 gap-3">
               {repos.map((repo) => (
                 <li
                   key={repo.id}
-                  className="w-40 h-full p-3 text-left md:p-4 bg-gray-100/75 dark:bg-gray-600/75 rounded-lg shadow hover:shadow-md transition hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 flex flex-col"
+                  className="w-auto sm:w-40 h-full p-2 text-left md:p-4 bg-gray-100/75 dark:bg-gray-600/75 rounded-lg shadow hover:shadow-md transition hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 flex flex-col"
                 >
                 <a
                   href={repo.html_url}
@@ -116,7 +116,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="flex flex-col h-full text-gray-600 dark:text-indigo-200"
                 >
-                  <div className="font-semibold hover:underline text-sm truncate">
+                  <div className="font-semibold hover:underline text-sm break-words">
                     {repo.name}
                   </div>
                   <div className="text-sm mt-2 text-gray-500 flex gap-4 text-xs">
